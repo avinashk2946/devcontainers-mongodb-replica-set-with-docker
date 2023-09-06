@@ -5,7 +5,7 @@ services:
     # setup MongoDB cluster for production
     mongo-replica-setup:
         container_name: mongo-setup
-        image: 'mongo:4.2'
+        image: 'mongo:5.0.20'
         restart: on-failure
         networks:
             - netApplication
@@ -26,7 +26,7 @@ services:
     mongo1:
         hostname: 'mongo1'
         container_name: 'mongo1'
-        image: 'mongo:4.2'
+        image: 'mongo:5.0.20'
         restart: 'on-failure'
         command: ["-f", "/etc/mongod.conf", "--port", "30001", "--keyFile", "/auth/file.key", "--replSet", "${MONGO_REPLICA_SET_NAME}", "--bind_ip_all"]
         expose: 
@@ -55,7 +55,7 @@ services:
     mongo2:
         hostname: 'mongo2'
         container_name: 'mongo2'
-        image: 'mongo:4.2'
+        image: 'mongo:5.0.20'
         command: ["-f", "/etc/mongod.conf","--port", "30002", "--keyFile", "/auth/file.key", "--replSet", "${MONGO_REPLICA_SET_NAME}", "--bind_ip_all"]
         restart: 'on-failure'
         expose: 
@@ -85,7 +85,7 @@ services:
     mongo3:
         hostname: 'mongo3'
         container_name: 'mongo3'
-        image: 'mongo:4.2'
+        image: 'mongo:5.0.20'
         command: ["-f", "/etc/mongod.conf", "--port", "30003", "--keyFile", "/auth/file.key", "--replSet", "${MONGO_REPLICA_SET_NAME}", "--bind_ip_all"]
         restart: 'on-failure'
         expose: 
